@@ -8,7 +8,7 @@ public class Main {
 
         int[][] arr = getMatrixFromFile();
         int[] minIJ = getLastMin(arr);
-        int[] maxIJ = getFirstMax(arr, minIJ[0], minIJ[1]);
+        int[] maxIJ = getFirstMaxAfterMin(arr, minIJ[0], minIJ[1]);
 
         System.out.println("Last min element in matrix [" + minIJ[0] + "]" + "[" + minIJ[1] + "] = " + arr[minIJ[0]][minIJ[1]]);
         System.out.println("First max element in matrix(bottom left) [" + maxIJ[0] + "]" + "[" + maxIJ[1] + "] = " + arr[maxIJ[0]][maxIJ[1]]);
@@ -37,13 +37,13 @@ public class Main {
         return arr;
     }
 
-    public static int[] getFirstMax(int[][] arr, int minIndexI, int minIndexJ) {
+    public static int[] getFirstMaxAfterMin(int[][] arr, int minIndexI, int minIndexJ) {
         int[] ij = new int[2];
 
         if (minIndexI == arr.length - 1) {
-            System.err.println("There is nothing below than min element.");
+            System.err.println("There is nothing below than last min element.");
         } else if (minIndexJ == 0) {
-            System.err.println("There is nothing to the left than min element.");
+            System.err.println("There is nothing to the left than last min element.");
         } else {
             int max = arr[0][0];
             for (int i = minIndexI + 1; i < arr.length; i++) {
